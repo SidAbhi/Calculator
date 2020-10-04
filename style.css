@@ -11,14 +11,20 @@ body {
     -moz-user-select: none;
     user-select: none;
 }
+p {
+    line-height: 2px;
+    height: fit-content;
+    margin: 1vh 0 0 0;
+}
 .center {
     margin: 0px auto 0px auto;
 }
 .calcgrid {
     display: grid;
-    grid-template-rows: 3fr 1fr repeat(4, 2fr);
+    grid-template-rows: 3fr 2fr 1fr repeat(4, 2fr);
     grid-template-columns: repeat(4,1fr);
     grid-template-areas: 
+    "z z z z"
     "a a a a"
     "b b b eq"
     "sv eg ni x"
@@ -34,6 +40,7 @@ body {
     padding-top: 5vh;
     padding-bottom: 5vh;
     color: #f4f4f4;
+    background-color: #ed6663;
 }
 .btn:hover{
     background-color: #fa4643;
@@ -42,32 +49,47 @@ body {
     padding-top: 1vh;
     color: #636363;
 }
-#result {
-    grid-area: a;
+.showOp {
+    margin-top: 42px;
+}
+#firstOp {
+    grid-area: z;
     text-align: right;
-    padding-top: 10vh;
+    padding-top: 2vh;
     padding-right: 3vw;
     background-color: #f4f4f4;
-    font-size: 40px;
     color: #3d3434;
 }
-#operation {
+.largeTxt {
+    font-size: 40px;
+}
+#numB {
+    grid-area: a;
+    text-align: right;
+    padding-top: 3vh;
+    padding-right: 3vw;
+    background-color: #f4f4f4;
+    color: #3d3434;
+}
+#result {
     grid-area: b;
     text-align: right;
     background-color: #f4f4f4;
     color: #636363;
+    padding-right: 4vw;
 }
 
 @media (orientation: landscape){
     .calcbase {
         width: 30vw;
-        min-width: 200px;
+        min-width:420px;
         height: 80vh;
-        min-height: 500px;
-        background-color: #ed6663;
+        min-height: 600px;
+        background-color: #f4f4f4;
         border-radius: 12px;
+        box-shadow: 0px 0px 12px 6px #3d34344d;
     }
-    #result {
+    #firstOp {
         border-radius: 12px 12px 0px 0px;
     }
     main {
@@ -81,20 +103,33 @@ body {
         background-color: #fa4643;
         border-radius: 0px 0px 12px 0px;
     }
+    #num0{
+        background-color: #ed6663;
+        border-radius: 0px 0px 0px 12px;
+    }
+    #neg{
+        background-color: #ed6663;
+        border-radius: 0px 0px 12px 0px;
+    }
 }
 @media (orientation: portrait){
     .calcbase {
         width: 100vw;
-        min-width: 200px;
+        min-width: 420px;
         height: 100vh;
-        min-height: 500px;
-        background-color: #ed6663;
+        min-height: 600px;
+        background-color: #f4f4f4;
     }
 }
 
 #eql {
     grid-area: eq;
-    background-color: #f4f4f4;
+    color: #f4f4f4;
+    background-color: #ed6663;
+    border-radius: 12px 0px 0px 0px;
+}
+#eql:hover{
+    background-color: #fa4643;
 }
 #mul {
     grid-area: ml;
