@@ -1,0 +1,108 @@
+body {
+    background-color: #43658b;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+}
+.center {
+    margin: 10px auto 10px auto;
+}
+.calcgrid {
+    display: grid;
+    grid-template-rows: 3fr 1fr repeat(4, 2fr);
+    grid-template-columns: repeat(4,1fr);
+    grid-template-areas: 
+    "a a a a"
+    "b b b eq"
+    "sv eg ni x"
+    "fr fv sx dv"
+    "on tw th pl"
+    "zr dt dl ng";
+}
+.btnMrg {
+    border: 8px;
+    text-align: center;
+}
+.btn {
+    padding-top: 4vh;
+}
+.btnSml {
+    padding-top: 1vh;
+}
+#result {
+    grid-area: a;
+    text-align: right;
+    padding-top: 20px;
+    padding-right: 10px;
+    background-color: white;
+}
+#operation {
+    grid-area: b;
+    text-align: right;
+    background-color: white;
+}
+#eql {
+    grid-area: eq;
+    background-color: white;
+}
+#mul {
+    grid-area: ml;
+}
+#div {
+    grid-area: dv;
+}
+#plus {
+    grid-area: pl;
+}
+#neg {
+    grid-area: ng;
+}
+#del {
+    grid-area: dl;
+}
+#dot {
+    grid-area: dt;
+}
+#num0 {
+    grid-area: zr;
+}
+#num1 {
+    grid-area: on;
+}
+#num2 {
+    grid-area: tw;
+}
+#num3 {
+    grid-area: th;
+}
+#num4 {
+    grid-area: fr;
+}
+#num5 {
+    grid-area: fv;
+}
+#num6 {
+    grid-area: sx;
+}
+#num7 {
+    grid-area: sv;
+}
+#num8 {
+    grid-area: eg;
+}
+#num9 {
+    grid-area: ni;
+}
+@media (orientation: landscape){
+    .calcbase {
+        width: 30vw;
+        height: 80vh;
+        background-color: #ed6663;
+    }
+}
+@media (orientation: portrait){
+    .calcbase {
+        width: 100vw;
+        height: 80vh;
+        background-color: #ed6663;
+    }
+}
