@@ -21,24 +21,24 @@ p {
 }
 .calcgrid {
     display: grid;
-    grid-template-rows: 3fr 2fr 1fr repeat(4, 2fr);
+    grid-template-rows: 4fr 1fr repeat(5, 2fr);
     grid-template-columns: repeat(4,1fr);
     grid-template-areas: 
-    "z z z z"
     "a a a a"
     "b b b eq"
+    "lg sr pw dl"
     "sv eg ni x"
     "fr fv sx dv"
     "on tw th pl"
-    "zr dt dl ng";
+    "zr dt cl ng";
 }
 .btnMrg {
-    border: 8px;
+    border: 4px;
     text-align: center;
 }
 .btn {
-    padding-top: 5vh;
-    padding-bottom: 5vh;
+    padding-top: 4vh;
+    padding-bottom: 4vh;
     color: #f4f4f4;
     background-color: #ed6663;
 }
@@ -49,21 +49,11 @@ p {
     padding-top: 1vh;
     color: #636363;
 }
-.showOp {
-    margin-top: 42px;
-}
-#firstOp {
-    grid-area: z;
-    text-align: right;
-    padding-top: 2vh;
-    padding-right: 3vw;
-    background-color: #f4f4f4;
-    color: #3d3434;
-}
 .largeTxt {
     font-size: 40px;
 }
-#numB {
+#calc {
+    overflow: auto;
     grid-area: a;
     text-align: right;
     padding-top: 3vh;
@@ -89,7 +79,7 @@ p {
         border-radius: 12px;
         box-shadow: 0px 0px 12px 6px #3d34344d;
     }
-    #firstOp {
+    #calc {
         border-radius: 12px 12px 0px 0px;
     }
     main {
@@ -178,4 +168,16 @@ p {
 }
 #num9 {
     grid-area: ni;
+}
+#log {
+    grid-area: lg;
+}
+#clear {
+    grid-area: cl;
+}
+#sqrt {
+    grid-area: sr;
+}
+#pwr {
+    grid-area: pw;
 }
