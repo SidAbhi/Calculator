@@ -18,8 +18,8 @@ function clear() {
 };
 
 function valExt() {
-    str = calcBox.textContent.replace(/[\slog()]/g,'');
-    num = str.split(/[-+x^√\/]/);
+    str = calcBox.textContent.replace(/[\slog()√]/g,'');
+    num = str.split(/[-+x^\/]/);
     for (i=0; i<num.length; i++) {
         num[i] = parseInt(num[i]);
     };
@@ -27,7 +27,24 @@ function valExt() {
 
 function calc() {
     valExt();
-
+    if(operator === 'plus') {
+        rsltVal = num[0] + num[1];
+    } else if(operator === 'neg') {
+        rsltVal = num[0] - num[1];
+    } else if(operator === 'mult') {
+        rsltVal = num[0] * num[1];
+    } else if(operator === 'div') {
+        rsltVal = num[0] / num[1];
+    } else if(operator === 'sqrt') {
+        rsltVal = Math.sqrt(num[0]);
+    } else if(operator === 'pwr') {
+        rsltVal = Math.pow(num[0], num[1]);
+    } else if(operator === 'log') {
+        rsltVal = Math.log(num[0]);
+    } else if(operator === '') {
+        rsltVal = num[0];
+    };
+    tempRslt.textContent = rsltVal;
 };
 
 function del() {
@@ -47,38 +64,63 @@ function inputNum() {
     } else if(operator === 'log'){
         valExt();
         calcBox.textContent = `log(${num[0]}${nmpad})`
+    } else if(operator === 'sqrt'){
+        valExt();
+        calcBox.textContent = `√${num[0]}${nmpad}`
     } else {
         calcBox.textContent = `${calcBox.textContent}${nmpad}`;
     }
     valExt();
+    calc();
 };
 
 function inputOp() {
     overwrite = false;
     oppad = document.querySelector(`#${this.id}`).id;
     opc = calcBox.textContent.replace(/[^-+x^√\/l]/g,"").length;
-    if(oppad === 'plus') {
-        calcBox.textContent = `${calcBox.textContent} + `;
-        operator = oppad;
-    } else if(oppad === 'neg') {
-        calcBox.textContent = `${calcBox.textContent} - `;
-        operator = oppad;
-    } else if(oppad === 'mult') {
-        calcBox.textContent = `${calcBox.textContent} x `;
-        operator = oppad;
-    } else if(oppad === 'div') {
-        calcBox.textContent = `${calcBox.textContent} / `;
-        operator = oppad;
-    } else if(oppad === 'sqrt') {
-        calcBox.textContent = `${calcBox.textContent} √ `;
-        operator = oppad;
-    } else if(oppad === 'pwr') {
-        calcBox.textContent = `${calcBox.textContent} ^ `;
-        operator = oppad;
-    } else if(oppad === 'log') {
-        calcBox.textContent = `log(${calcBox.textContent})`;
-        operator = oppad;
-    } else if(oppad === 'clear'){
+    tmpCalc = function() {
+        calc();
+        calcBox.textContent = `${rsltVal}`
+        valExt();
+        rsltVal = 0;
+        tempRslt.textContent = '';
+        operator = '';
+    };
+    addOp = function() {
+        if(oppad === 'plus') {
+            calcBox.textContent = `${calcBox.textContent} + `;
+            operator = oppad;
+        } else if(oppad === 'neg') {
+            calcBox.textContent = `${calcBox.textContent} - `;
+            operator = oppad;
+        } else if(oppad === 'mult') {
+            calcBox.textContent = `${calcBox.textContent} x `;
+            operator = oppad;
+        } else if(oppad === 'div') {
+            calcBox.textContent = `${calcBox.textContent} / `;
+            operator = oppad;
+        } else if(oppad === 'sqrt') {
+            calcBox.textContent = `√${calcBox.textContent}`;
+            operator = oppad;
+        } else if(oppad === 'pwr') {
+            calcBox.textContent = `${calcBox.textContent} ^ `;
+            operator = oppad;
+        } else if(oppad === 'log') {
+            calcBox.textContent = `log(${calcBox.textContent})`;
+            operator = oppad;
+        };
+    };
+    if (opc === 0 && (oppad !== 'log' && oppad !== 'sqrt')) {  
+        addOp();  
+    } else if (opc === 0 && (oppad === 'log' || oppad === 'sqrt')){
+        addOp();
+        calc();
+    } else {
+        tmpCalc();
+        addOp();
+    };
+
+    if(oppad === 'clear'){
         clear();
     } else if(oppad === 'del') {
         valExt();
@@ -86,9 +128,7 @@ function inputOp() {
         if(calcBox.textContent === '0') {
             overwrite = true;
         };
-    } else if(oppad === 'eql') {
-        return x;
-    }
+    };
 };
 
 btnNum.forEach(val => {
