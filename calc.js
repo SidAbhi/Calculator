@@ -4,6 +4,7 @@ const tempRslt = document.querySelector('#result');
 let num = [0, 0];
 let rsltVal = 0;
 let overwrite = true;
+let fnlRslt = false;
 const btnNum = [...document.querySelectorAll('.Num')];
 const btnOp = [...document.querySelectorAll('.Op')];
 let operator = '';
@@ -15,7 +16,15 @@ function clear() {
     rsltVal = 0;
     operator = '';
     overwrite = true;
+    tempRslt.textContent = '';
 };
+
+function nan() {
+    if (Number.isNaN(num[0])||Number.isNaN(num[1])||Number.isNaN(rsltVal)) {
+    clear();
+    };
+};
+
 
 function valExt() {
     str = calcBox.textContent.replace(/[\slog()√]/g,'');
@@ -40,7 +49,7 @@ function calc() {
     } else if(operator === 'pwr') {
         rsltVal = Math.pow(num[0], num[1]);
     } else if(operator === 'log') {
-        rsltVal = Math.log(num[0]);
+        rsltVal = Math.log(snum[0]);
     } else if(operator === '') {
         rsltVal = num[0];
     };
@@ -50,6 +59,9 @@ function calc() {
 function del() {
     if (Number.isNaN(num[1]) || operator === 'log') {
         calcBox.textContent = calcBox.textContent.replace(/[-+x^√\/\slog()]/g,'');
+    } else if(fnlRslt = true) {
+        calcBox.textContent = '0';
+        fnlRslt = false;
     } else {
         calcBox.textContent = calcBox.textContent.slice(0, -1);
     };
@@ -75,6 +87,7 @@ function inputNum() {
 };
 
 function inputOp() {
+    nan();
     overwrite = false;
     oppad = document.querySelector(`#${this.id}`).id;
     opc = calcBox.textContent.replace(/[^-+x^√\/l]/g,"").length;
@@ -115,9 +128,9 @@ function inputOp() {
     } else if (opc === 0 && (oppad === 'log' || oppad === 'sqrt')){
         addOp();
         calc();
-    } else {
+    } else if(oppad ==='eql') {
         tmpCalc();
-        addOp();
+        fnlRslt = true;
     };
 
     if(oppad === 'clear'){

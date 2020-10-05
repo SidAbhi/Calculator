@@ -42,9 +42,6 @@ p {
     color: #f4f4f4;
     background-color: #ed6663;
 }
-.btn:hover{
-    background-color: #fa4643;
-}
 .btnSml {
     padding-top: 1vh;
     color: #636363;
@@ -78,6 +75,13 @@ p {
         background-color: #f4f4f4;
         border-radius: 12px;
         box-shadow: 0px 0px 12px 6px #3d34344d;
+        
+    }
+    .btn:hover{
+        background-color: #fa4643;
+    }
+    #eql:hover{
+        background-color: #fa4643;
     }
     #calc {
         border-radius: 12px 12px 0px 0px;
@@ -103,11 +107,12 @@ p {
     }
 }
 @media (orientation: portrait){
+    body {
+        background-color: #ed6663;
+    }
     .calcbase {
         width: 100vw;
-        min-width: 420px;
-        height: 100vh;
-        min-height: 600px;
+        height: 90vh;
         background-color: #f4f4f4;
     }
 }
@@ -117,9 +122,6 @@ p {
     color: #f4f4f4;
     background-color: #ed6663;
     border-radius: 12px 0px 0px 0px;
-}
-#eql:hover{
-    background-color: #fa4643;
 }
 #mul {
     grid-area: ml;
