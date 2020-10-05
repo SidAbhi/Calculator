@@ -112,7 +112,13 @@ p {
     }
     .calcbase {
         width: 100vw;
+<<<<<<< HEAD
         height: 90vh;
+=======
+        min-width: 320px;
+        height: 100vh;
+        min-height: 600px;
+>>>>>>> 5adbbb11b0403b12a21f488fd0e63f4c8e0dd81e
         background-color: #f4f4f4;
     }
 }
