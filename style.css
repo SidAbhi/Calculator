@@ -105,7 +105,7 @@ p {
 @media (orientation: portrait){
     .calcbase {
         width: 100vw;
-        min-width: 420px;
+        min-width: 320px;
         height: 100vh;
         min-height: 600px;
         background-color: #f4f4f4;
